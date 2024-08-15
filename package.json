@@ -1,0 +1,17 @@
+{
+    "name": "gyt",
+    "version": "1.0.0",
+    "description": "build your own git",
+    "main": "main.js",
+    "scripts": {
+        "dev": "node app/main.js"
+    },
+    "keywords": [
+        "build-your-own-x"
+    ],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "zlib": "^1.0.5"
+    }
+}
