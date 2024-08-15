@@ -7,6 +7,8 @@ const {
   CatFileCommand,
   HashObjectCommand,
   LSTreeCommand,
+  WriteTreeCommand,
+  CommitTreeCommand,
 } = require("./git/commands");
 
 const gitClient = new GitClient();
@@ -29,6 +31,14 @@ switch (command) {
 
   case "ls-tree":
     handleLSTreeCommand();
+    break;
+
+  case "write-tree":
+    handleWriteTreeCommand();
+    break;
+
+  case "commit-tree":
+    handleCommitTreeCommand();
     break;
 
   default:
@@ -82,4 +92,26 @@ function handleLSTreeCommand() {
   const lsTreeCommand = new LSTreeCommand(flag, hash);
 
   gitClient.run(lsTreeCommand);
+}
+
+function handleWriteTreeCommand() {
+  const writeTreeCommand = new WriteTreeCommand();
+
+  gitClient.run(writeTreeCommand);
+}
+
+function handleCommitTreeCommand() {
+  const tree = process.argv[3];
+  const firstFlag = process.argv[4];
+  let parent = process.argv[5];
+  let message = process.argv[7];
+
+  if (firstFlag === "-m") {
+    message = parent;
+    parent = null;
+  }
+
+  const commitTreeCommand = new CommitTreeCommand(tree, message, parent);
+
+  gitClient.run(commitTreeCommand);
 }
