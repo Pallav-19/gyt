@@ -4,6 +4,12 @@
 A spoof of the popular VCS Git, in its initial stage.
 
 
+## Before You Proceed
+
+#### Refer git objects here
+[Git Objects](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects)
+
+
 ## Commands Description
 
 ### git cat-file -p <sha>
